@@ -1,17 +1,9 @@
 pipeline {
     agent any
-    environment {
-        MAVEN_TOOL = 'maven3'
-        NEXUS_URL = 'http://18.191.170.217:8081/nexus'
-        NEXUS_CREDENTIAL_ID = 'nexus-logins'
-        GIT_REPO_URL = 'https://github.com/devops-tarunraj/SimpleWebApp.git'
-    }
-
     stages {
         stage('Checkout') {
             steps {
                 // Checkout code from Git
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'your-app-name']], submoduleCfg: [], userRemoteConfigs: [[url: GIT_REPO_URL]]])
             }
         }
 
